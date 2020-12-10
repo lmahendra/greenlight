@@ -70,7 +70,16 @@
           <%= button_to t("room.join"), room_path(@room), class: "btn btn-primary btn-block px-7 start-button float-right", "data-disable": "" %>
         <% else %>
           <% unless exceeds_limit %>
+	<% ondate = @room.subscription_date || Date.today
+	   sdd = (ondate.to_date - Date.today).to_i 
+	if sdd > 0 && sdd < 7 %>
+		 <p style="color: red;">Your premium membership will expire in <%= sdd %> Days. Contact 9970804349 (Mahendra Lungare) to renew premium membership</p>
+                <%= button_to t("room.start"), start_room_path(@room), class: "btn btn-primary btn-block px-7 start-button float-right", "data-disable": "" %>
+	<% elsif sdd > 0%>
             <%= button_to t("room.start"), start_room_path(@room), class: "btn btn-primary btn-block px-7 start-button float-right", "data-disable": "" %>
+	<% else %>
+	<p style="color: red;">Contact 9970804349 (Mahendra Lungare) to get premium membership and Start Using Services of this site.</p>
+	<% end %>
           <% end %>
         <% end %>
       </div>

@@ -13,3 +13,4 @@ Rake::TestTask.new do |t|
 end
 
 Rails.application.load_tasks
+#Coffee::Rails::TemplateHandler.call(template, source)

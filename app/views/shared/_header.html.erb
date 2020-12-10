@@ -16,9 +16,9 @@
 <div class="header py-4">
   <div class="container">
     <div class="d-flex">
-      <%= link_to (current_user ? home_page : root_path), class: "header-brand" do %>
+      <%= link_to (current_user ? home_page : "http://teache.in"), class: "header-brand", style: "width: 15%" do %>
         <% begin %>
-          <%= image_tag(logo_image, class: "header-brand-img", alt:"") %>
+          <%= image_tag("/teachenew.png", class: "header-brand-img", alt:"", style: "height: 4rem; width: 100%;") %>
         <% rescue %>
           <%= t("administrator.site_settings.branding.invalid") %>
         <% end %>
@@ -106,3 +106,4 @@
     </div>
   </div>
 </div>
+

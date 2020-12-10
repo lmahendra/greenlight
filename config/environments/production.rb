@@ -117,7 +117,8 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   # Use Lograge for logging
-  config.lograge.enabled = true
+  config.lograge.enabled = false
+  #config.lograge.enabled = true
 
   config.lograge.ignore_actions = ["HealthCheckController#all", "ThemesController#index",
                                    "ApplicationCable::Connection#connect", "WaitingChannel#subscribe",
@@ -132,7 +133,8 @@ Rails.application.configure do
     "#{severity}: #{msg} \n"
   end
 
-  config.log_level = :info
+  #config.log_level = :info
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags.
   config.log_tags = [:request_id]

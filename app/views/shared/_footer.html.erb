@@ -13,22 +13,11 @@
 # with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 %>
 
-<footer class="footer pt-3">
-  <p class="text-center mb-1">
-    <%= t("footer.powered_by", href: link_to(t("greenlight"), "https://bigbluebutton.org/2018/07/09/greenlight-2-0/", target: "_blank", rel: "noopener")).html_safe %> <%= Greenlight::Application::VERSION %>
-    <% if legal_url.present? %>
-      <span>
-        |
-        <%= link_to(t("footer.legal"), legal_url) %>
-      </span> 
-    <% end %>
-    <% if privpolicy_url.present? %>
-      <span>
-        |
-        <%= link_to(t("footer.privpolicy"), privpolicy_url)  %>
-      </span>
-    <% end %>
-  </p>
+<footer class="footer ">
+  <section class="bg-dark pt-1 pb-2 text-lightcoral" id="CONTACT">
+		<div class="card-body text-center">			<h4 class="card-title">Contact Us</h4>			<p class="card-text">Mail to : info@teache.in</p>					  <p class="font-size-14 text-secondary text-center mt-2">
+		      2020 All Rights Reserved.&nbsp;</p><div><br></div><p></p></div>
+	</section>
 </footer>
 
 <%= render "shared/components/cookie_warning" %>

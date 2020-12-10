@@ -18,3 +18,5 @@ Rails.application.config.assets.precompile += %w(_primary_theme.scss
                                                  monolith.min.scss
                                                  bootstrap-select.min.js
                                                  bootstrap-select.min.css)
+Rails.application.config.assets.precompile += %w( application.css )
+Rails.application.config.assets.precompile += %w( '*.css' )

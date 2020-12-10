@@ -3,7 +3,7 @@ version: '3'
 services:
   app:
     entrypoint: [bin/start]
-    image: bigbluebutton/greenlight:v2
+    image: classkohi:release-v2
     container_name: greenlight-v2
     env_file: .env
     restart: unless-stopped
@@ -23,13 +23,12 @@ services:
     links:
       - db
   db:
-    image: postgres:9.5
+    image: mysql:8.0.20
     restart: unless-stopped
     ports:
-      - 127.0.0.1:5432:5432
+      - 3306
     volumes:
       - ./db/production:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=MahiTe@che20
+      - MYSQL_DATABASE=glnew

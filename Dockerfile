@@ -1,4 +1,4 @@
-FROM ruby:2.5.1-alpine AS base
+FROM ruby:2.7.0
 
 # Set a variable for the install location.
 ARG RAILS_ROOT=/usr/src/app
@@ -11,22 +11,23 @@ RUN mkdir -p $RAILS_ROOT
 WORKDIR $RAILS_ROOT
 
 ARG BUILD_PACKAGES="build-base curl-dev git"
-ARG DEV_PACKAGES="postgresql-dev sqlite-libs sqlite-dev yaml-dev zlib-dev nodejs yarn"
+ARG DEV_PACKAGES="yaml-dev zlib-dev nodejs yarn"
 ARG RUBY_PACKAGES="tzdata"
+RUN gem install bundler -v 2.0.1
 
 # Install app dependencies.
-RUN apk update \
-    && apk upgrade \
-    && apk add --update --no-cache $BUILD_PACKAGES $DEV_PACKAGES $RUBY_PACKAGES
+RUN apt-get update \
+    && apt-get upgrade \
+    && apt=get add --update --no-cache $BUILD_PACKAGES $DEV_PACKAGES $RUBY_PACKAGES
 
 COPY Gemfile* ./
 COPY Gemfile Gemfile.lock $RAILS_ROOT/
 
 RUN bundle config --global frozen 1 \
     && bundle install --deployment --without development:test:assets -j4 --path=vendor/bundle \
-    && rm -rf vendor/bundle/ruby/2.5.0/cache/*.gem \
-    && find vendor/bundle/ruby/2.5.0/gems/ -name "*.c" -delete \
-    && find vendor/bundle/ruby/2.5.0/gems/ -name "*.o" -delete
+#    && rm -rf vendor/bundle/ruby/2.5.0/cache/*.gem \
+#    && find vendor/bundle/ruby/2.5.0/gems/ -name "*.c" -delete \
+#    && find vendor/bundle/ruby/2.5.0/gems/ -name "*.o" -delete
 
 # Adding project files.
 COPY . .
@@ -36,7 +37,7 @@ RUN rm -rf tmp/cache spec
 
 ############### Build step done ###############
 
-FROM ruby:2.5.1-alpine
+FROM ruby:2.7.0p0
 
 # Set a variable for the install location.
 ARG RAILS_ROOT=/usr/src/app

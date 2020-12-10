@@ -37,6 +37,9 @@ Rails.application.configure do
     html_tag.html_safe
   end
 
+  config.relative_url_root = ENV['RELATIVE_URL_ROOT'] || "/b" if ENV['RELATIVE_URL_ROOT'] != "/"
+
+
   # Tell Action Mailer to use smtp server, if configured
   config.action_mailer.delivery_method = ENV['SMTP_SERVER'].present? ? :smtp : :sendmail
 

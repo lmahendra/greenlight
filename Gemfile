@@ -2,13 +2,15 @@
 
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
+#git_source(:github) do |repo_name|
+#  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+#  "https://github.com/#{repo_name}.git"
+#end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4.3'
+
+ruby '2.7.0'
+gem 'rails',          '~> 6.0.3.2'
+gem 'mysql2'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
@@ -77,8 +79,9 @@ gem 'redcarpet'
 gem 'cancancan', '~> 2.0'
 
 group :production do
+  #gem 'sqlite3', '~> 1.3.6'
   # Use a postgres database in production.
-  gem 'pg', '~> 0.18'
+  #gem 'pg', '~> 0.18'
   gem 'sequel'
 
   # For a better logging library in production
@@ -98,7 +101,7 @@ group :development, :test do
   # Environment configuration.
   gem 'dotenv-rails'
   # Use a sqlite database in test and development.
-  gem 'sqlite3', '~> 1.3.6'
+  #gem 'sqlite3', '~> 1.3.6'
 end
 
 group :test do

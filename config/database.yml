@@ -1,23 +1,56 @@
-default: &default
-  pool: 5
-  timeout: 5000
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+
+
+
+# default: &default
+#   adapter: sqlite3
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   timeout: 5000
+
+# development:
+#   <<: *default
+#   database: db/development.sqlite3
+
+# test:
+#   <<: *default
+#   database: db/test.sqlite3
+
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
+
 
 development:
-  <<: *default
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: glnew
+  pool: 7
+  username: root
+  password: MahiTe@che20
+  host: localhost
 
 test:
-  <<: *default
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: school_mgmt
+  pool: 5
+  username: root
+  password: root
+  host: localhost
 
-# Use sqlite in production by default. Greenlight supports
 production:
-  <<: *default
-  adapter: <%= ENV['DB_ADAPTER'] || 'sqlite3' %>
-  host: <%= ENV['DB_HOST'] %>
-  port: <%= ENV['DB_PORT' || '5432'] %>
-  database: <%= ENV['DB_NAME'] || 'db/production/production.sqlite3' %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: glnew 
+  pool: 5
+  username: root
+  password: MahiTe@che20
+  host: localhost
